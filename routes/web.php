@@ -19,17 +19,20 @@
 
 */
 
+/*VIEW*/
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/samu', function () {
+    return view('samu_home');
+});
+//Membatasi hanya dari post / GET
+Route::match([ 'post','get'], '/samu_post', function () {
+    return view('samu_post');
 });
 
 Route::get('foo', function () {
     return 'Hello World';
-});
-
-
-Route::get('/samu', function () {
-    return view('samu_home');
 });
 
 //Membatasi hanya dari post
@@ -37,14 +40,9 @@ Route::match([ 'post'], '/match', function () {
     echo 'match';
 });
 
-//Membatasi hanya dari post / GET
-Route::match([ 'post','get'], '/samu_post', function () {
-    return view('samu_post');
-});
-
 //Ambil Value dari URI segment
 Route::get('user/{id}', function ($id) {
-    return 'User '.$id;
+    return 'Ambil Value dari URI segment User '.$id;
 });
 Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
     return 'posts '.$postId.' comments '.$commentId;
@@ -52,5 +50,24 @@ Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
 
 //Optional URI segment set return default
 Route::get('user/{name?}', function ($name = 'John') {
-    return $name;
+    return 'Optional URI segment set return default '.$name;
 });
+
+//Where Parameter
+Route::get('where/{name}', function ($name) {
+    return 'Where Parameter '. $name . ' == [Regular Expression]';
+})->where('name', '[A-Za-z]+');
+Route::get('where/{id}', function ($id) {
+    //
+})->where('id', '[0-9]+');
+Route::get('where/{id}/{name}', function ($id, $name) {
+    //
+})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+
+
+/*CONTROLLER*/
+Route::get('halo', 'TestController@Index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

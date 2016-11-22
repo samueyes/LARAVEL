@@ -66,6 +66,9 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            {{$satu[0]}}
+            {{$name}}
+            {{$alamat}}
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -90,7 +93,6 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
-			
 			<form method="POST" action="/profile">
 				{{ csrf_field() }}
 				...
