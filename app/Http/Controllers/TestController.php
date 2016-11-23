@@ -12,6 +12,6 @@ class TestController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     function index(){
     	// return 'samu';
-    	return view('samu_home', ['satu'=>[1,2,3],'name'=>'samu','alamat'=>'samu2'] );
+    	return view('samu_array', ['satu'=>[1,2,3],'name'=>'samu','alamat'=>'samu2'] );
     }
 }

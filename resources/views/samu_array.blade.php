@@ -75,7 +75,9 @@ print_r($name);
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-
+            {{$satu[0]}}
+            {{$name}}
+            {{$alamat}}
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())

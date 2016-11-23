@@ -4,8 +4,12 @@ $route = Route::current();
 $name = Route::currentRouteName();
 
 $action = Route::currentRouteAction();
+$has = Route::has('');
 
+// print_r($route);
 print_r($name);
+// var_dump($has);
+// print_r($action);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +79,9 @@ print_r($name);
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            @if (Route::has('samu_test'))
+                    Ok Punya has
+            @endif
 
             @if (Route::has('login'))
                 <div class="top-right links">

@@ -63,6 +63,9 @@ Route::get('where/{id}', function ($id) {
 Route::get('where/{id}/{name}', function ($id, $name) {
     //
 })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+Route::get('has', function () {
+   return view('samu_has');
+})->name('samu_test');;
 
 
 /*CONTROLLER*/
